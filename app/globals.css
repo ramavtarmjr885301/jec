@@ -1,26 +1,75 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #FDF8F0;
+  --ink: #1A1208;
+  --gold: #C8860A;
+  --gold-light: #F5D98A;
+  --gold-pale: #FEF7E0;
+  --saffron: #E8760A;
+  --rust: #8B3A0F;
+  --green-deep: #0F4E2A;
+  --green-mid: #1A7A40;
+  --green-light: #D4EDDF;
+  --text-muted: #6B5C3E;
+  --border-color: rgba(200, 134, 10, 0.2);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-[#FDF8F0] text-[#1A1208] overflow-x-hidden;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-alt {
+    @apply bg-white;
+  }
+
+  .section-header {
+    @apply text-center mb-12 md:mb-16;
+  }
+
+  .section-tag {
+    @apply text-xs font-bold tracking-wider text-[#C8860A] uppercase mb-3;
+  }
+
+  .section-title {
+    @apply font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1208];
+  }
+
+  .section-title em {
+    @apply text-[#C8860A] not-italic;
+  }
+
+  .section-desc {
+    @apply text-base text-[#6B5C3E] max-w-2xl mx-auto mt-4;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-[#C8860A] text-white px-6 py-3 rounded-lg font-semibold transition-all hover:bg-[#E8760A] hover:-translate-y-0.5 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-transparent text-[#1A1208] px-6 py-3 rounded-lg font-semibold border-2 transition-all hover:border-[#C8860A] hover:text-[#C8860A];
+    border-color: rgba(200, 134, 10, 0.2);
+  }
+
+  .fade-up {
+    @apply opacity-0 translate-y-8 transition-all duration-700;
+  }
+
+  .fade-up.visible {
+    @apply opacity-100 translate-y-0;
+  }
 }
